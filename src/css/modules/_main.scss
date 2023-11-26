@@ -1,0 +1,324 @@
+* {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+    height: 100%;
+}
+
+img {
+    width: 100%;
+}
+
+.container {
+    height: 100%;
+    max-width: 100%;
+}
+
+.bg {
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: #fff;
+    background-image: url(../images/bg-white.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    
+    @include base_transition(all);
+
+    @include min-responsive($md) {
+        background-image: url(../images/bg-white-d.jpg);
+    }
+
+    &.blue {
+        background-color: #0368B1;
+        background-image: url(../images/bg-blue.jpg);
+    
+        @include min-responsive($md) {
+            background-image: url(../images/bg-blue-d.jpg);
+        }
+    }
+}
+
+.head {
+    top: 0;
+    left: 0;
+    align-items: center;
+
+    &__mid {
+        top: 40px;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        max-width: 1300px;
+        align-self: center;
+
+        @include min-responsive($md) {
+            justify-content: center;
+        }
+
+        &--zero {
+            flex: 0 0 50%;
+
+            @include min-responsive($md) {
+                flex: 0 0 350px;
+                margin: 0 15px;
+            }
+        }
+
+        &--one {
+            flex: 0 0 25%;
+            
+            @include min-responsive($md) {
+                flex: 0 0 150px;
+                margin: 0 15px;
+            }
+        }
+
+        &--two {
+            flex: 0 0 10%;
+
+            @include min-responsive($md) {
+                flex: 0 0 65px;
+                margin: 0 15px;
+            }
+        }
+    }
+
+    &__text {
+        @include max-responsive($xs) {
+            font-size: 13px;
+        }
+    }
+}
+
+.logo {
+    &--left {
+        flex: 0 0 25%;
+
+        @include min-responsive($md) {
+            flex: 0 0 150px;
+        }
+    }
+
+    &--right {
+        align-items: center;
+        flex: 0 0 70%;
+
+        @include min-responsive($md) {
+            flex: 0 0 425px;
+        }
+    }
+
+    &--indosat {
+        flex: 0 0 27%;
+    }
+
+    &--undp {
+        flex: 0 0 10%;
+    }
+
+    &--kemenkopukm {
+        flex: 0 0 55%;
+    }
+}
+
+.content {
+    @include min-responsive($md) {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    @include min-responsive($lg) {
+        width: 800px;
+        margin: 0 auto;
+    }
+}
+
+/* Hide the browser's default checkbox */
+.input__wrap {
+    cursor: pointer;
+}
+
+.input__wrap input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+  
+/* Create a custom checkbox */
+.input__custom {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    border-radius: 50%;
+    border: solid 2px;
+    flex: 0 0 15px;
+    margin-right: 0.75rem;
+    background-color: #fff;
+}
+  
+/* Create the checkmark/indicator (hidden when not checked) */
+.input__custom:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+/* Show the checkmark when checked */
+.input__wrap input:checked ~ .input__custom:after {
+    display: block;
+}
+  
+/* Style the checkmark/indicator */
+.input__wrap .input__custom:after {
+    left: 0;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    background: $color__blue;
+    border-radius: 50%;
+    margin: auto;
+    right: 0;
+    bottom: 0;
+}
+
+.input {
+    &__shadow {
+        box-shadow: 1px 1px $color__white, 2px 2px $color__blue;
+    }
+}
+
+.flex {
+    &__dropdown {
+        & p {
+            flex: 0 0 60%;
+            margin-right: 10px;
+        }
+
+        & select {
+            flex: 0 0 40%;
+        }
+    }
+}
+
+select {
+    background-color: #fff;
+}
+
+.btn {
+    &__next {
+        background-color: #0368B1;
+        color: #fff;
+        border-color: #0368B1;
+        animation-name: pulse;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+
+        @include base_transition(all);
+    }
+
+    &__change {
+        &--white {
+            background-color: #ff0000;
+        }
+    }
+}
+
+.disabled {
+    background-color: #c3c3c3 !important;
+    color: #919191;
+    border-color: #919191;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+/* Works on Firefox */
+.content-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #e6e6e6 #fff;
+  }
+  
+/* Works on Chrome, Edge, and Safari */
+.content-scroll::-webkit-scrollbar {
+    width: 12px;
+}
+  
+.content-scroll::-webkit-scrollbar-track {
+    background: #fff;
+}
+  
+.content-scroll::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
+    border-radius: 20px;
+    border: 3px solid #fff;
+}
+
+// animation
+@-webkit-keyframes pulse {
+    50% {
+        -webkit-transform: scale(1.1);
+    }
+    
+    100% {
+        -webkit-transform: scale(1);
+    }
+}
+
+@-moz-keyframes pulse {
+    50% {
+        -moz-transform: scale(1.1);
+    }
+    
+    100% {
+        -moz-transform: scale(1);
+    }
+}
+
+@-o-keyframes pulse {
+    50% {
+        -o-transform: scale(1.1);
+    }
+    
+    100% {
+        -o-transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.1);
+    }
+    
+    100% {
+        transform: scale(1);
+    }
+}
+
+.my-4.grid.grid-cols-2 {
+    grid-template-rows: repeat(9, minmax(0, 1fr));
+    grid-auto-flow: column;
+}
+
+.my-4.grid.grid-cols-2.grid__fixed {
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+}
+
+.multiple__input {
+    & small {
+        margin-left: 28px;
+        display: inline-block;
+    }
+}
+
+.main__title {
+    padding-top: 40px;
+}
